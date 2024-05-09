@@ -14,11 +14,16 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+    - name: Set up Note.js 16.x
+        uses: actions/setup-python@v3
+        with:
+          node-version: 16.x
     
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 4.x
+          python-version: 3.x
 
       - name: Install dependencies
         run: pip install selenium requests futures eventlet
