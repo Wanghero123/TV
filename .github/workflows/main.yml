@@ -6,9 +6,7 @@ on:
   push:
     branches:
       - main
-permissions:
-  contents: write
-  
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,20 +22,21 @@ jobs:
           python-version: '3.12.3'
 
       - name: Install dependencies
-        run: pip install selenium==4.19.0 requests==2.31.0 futures==3.0.5 eventlet==0.36.1
+        #run: pip install selenium==4.19.0 requests==2.31.0 futures==3.0.5 eventlet==0.36.1
+        run: pip install selenium requests futures eventlet
 
-      - name: Run itv_all
-        run: python ${{ github.workspace }}/itv_all.py
+      #- name: Run itv_all
+        #run: python ${{ github.workspace }}/itv_all.py
 
-      #- name: Run cctv
-        #run: python ${{ github.workspace }}/cctv.py
+      - name: Run cctv
+        run: python ${{ github.workspace }}/new.py
         
       #- name: Run weishi
         #run: python ${{ github.workspace }}/weishi.py
         
       #- name: Run qita
         #run: python ${{ github.workspace }}/qita.py
-        
+                
       - name: 提交更改
         run: |
           git config --local user.email "1153743875@qq.com"
